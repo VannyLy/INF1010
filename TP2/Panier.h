@@ -13,23 +13,24 @@ public:
 	Panier(const Panier& autrePanier);
 	~Panier();
 
-	Panier& operator= (Panier panier);
+	Panier& operator= (const Panier panier);
 
-	Panier operator+ (Article article);
-	Panier operator+ (Panier autrePanier);
-	Panier operator- (Article article);
-	Panier operator- (Panier &autrePanier);
+	Panier operator+ (const Article &article) const;
+	Panier operator+ (const Panier &autrePanier) const;
+	Panier operator- (const Article &article) const;
+	Panier operator- (const Panier &autrePanier) const;
 
-	void operator+= (Article article);
-	void operator+= (Panier autrePanier);
-	void operator-= (Article article);
-	void operator-= (Panier &autrePanier);
+	void operator+= (const Article &article);
+	void operator+= (const Panier &autrePanier);
+	void operator-= (const Article &article);
+	void operator-= (const Panier &autrePanier);
 
 	friend ostream& operator<< (ostream& os, const Panier& panier);
-	friend Panier operator+ (Article& article, Panier& panier);
+	friend Panier operator+ (const Article& article, const Panier& panier);
+	friend Panier operator+ (const int& id, const Panier& panier);
 
-	size_t getTaille();
-	float getTotal();
+	size_t getTaille() const;
+	float getTotal() const;
 
 private:
 	vector<Article*> listeArticles_;

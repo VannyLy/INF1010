@@ -22,12 +22,21 @@ Panier::Panier(const Panier& autrePanier){
 	}
 }
 
-Panier::~Panier(){}
+Panier::~Panier()
+{
+	for (int i = 0; i < listeArticles_.size(); i++)
+	{
+		delete listeArticles_[i];
+	}
 
-Panier& Panier::operator= (Panier panier){
+}
+
+Panier& Panier::operator= (const Panier panier)
+{
 	int taille = this->getTaille();
 	for (int i = 0; i < taille; i++)
 	{
+		delete listeArticles_[taille - i - 1];
 		listeArticles_.pop_back();
 	}
 	for (int j = 0; j < panier.listeArticles_.size(); j++)
@@ -38,14 +47,15 @@ Panier& Panier::operator= (Panier panier){
 	return *this;
 }
 
-Panier Panier::operator+ (Article article){
+Panier Panier::operator+ (const Article &article) const
+{
 	Panier panierTemporaire(*this);
 	panierTemporaire.listeArticles_.push_back(new Article(article.getId(), article.getNom(), article.getPrix()));
 	panierTemporaire.total_ += article.getPrix();
 	return panierTemporaire;
 }
 
-Panier Panier::operator+ (Panier autrePanier){
+Panier Panier::operator+ (const Panier &autrePanier) const{
 	Panier panierTemporaire(*this);
 	for (int j = 0; j < autrePanier.listeArticles_.size(); j++)
 	{
@@ -57,13 +67,14 @@ Panier Panier::operator+ (Panier autrePanier){
 }
 
 
-Panier Panier::operator- (Article article)
+Panier Panier::operator- (const Article &article) const
 {
 	Panier panierTemporaire(*this);
 	for (int i = 0; i < panierTemporaire.listeArticles_.size(); i++)
 	{
 		if (*panierTemporaire.listeArticles_[i] == article)
 		{ 
+			delete panierTemporaire.listeArticles_[i];
 			panierTemporaire.listeArticles_[i] = panierTemporaire.listeArticles_[panierTemporaire.listeArticles_.size()-1];
 			panierTemporaire.listeArticles_.pop_back();
 			break;
@@ -72,7 +83,7 @@ Panier Panier::operator- (Article article)
 	return panierTemporaire;
 }
 
-Panier Panier::operator- (Panier &autrePanier)
+Panier Panier::operator- (const Panier &autrePanier) const
 {
 	Panier panierTemporaire(*this);
 	for (int i = 0; i < autrePanier.listeArticles_.size(); i++)
@@ -82,28 +93,32 @@ Panier Panier::operator- (Panier &autrePanier)
 	return panierTemporaire;
 }
 
-void Panier::operator+= (Article article){
+void Panier::operator+= (const Article &article)
+{
 	*this = *this + article;
 }
 
-void Panier::operator+= (Panier autrePanier){
+void Panier::operator+= (const Panier &autrePanier)
+{
 	*this = *this + autrePanier;
 }
 
-void Panier::operator-= (Article article){
+void Panier::operator-= (const Article &article)
+{
 	*this = *this - article;
 }
 
-void Panier::operator-= (Panier &autrePanier){
+void Panier::operator-= (const Panier &autrePanier)
+{
 	*this = *this - autrePanier;
 }
 
-size_t Panier::getTaille()
+size_t Panier::getTaille() const
 {
 	return listeArticles_.size();
 }
 
-float Panier::getTotal()
+float Panier::getTotal() const
 {
 	return total_;
 }
@@ -120,7 +135,13 @@ ostream& operator<< (ostream& os, const Panier& panier)
 		return os;
 }
 
-Panier operator+ (Article& article, Panier& panier)
+Panier operator+ (const Article& article, const Panier& panier)
 {
+	return (panier + article);
+}
+
+Panier operator+ (const int& id, const Panier& panier)
+{
+	Article article(id);
 	return (panier + article);
 }

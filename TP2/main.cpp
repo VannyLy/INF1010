@@ -13,9 +13,9 @@ int main()
 	// 2. Créer quelques articles (au moins trois) avec  les constructeurs et 
 	// l'opérateur >>
 
-	Article banane(123, "Banane", 0.02);
-	Article pomme(456, "Pomme", 0.03);
-	Article chocolatHershey(69, "Hershey", 1.00);
+	Article banane(123, "Banane", 0.20);
+	Article pomme(456, "Pomme", 0.30);
+	Article chocolatHershey(69, "Hershey", 1.50);
 	Article articlePerso;
 	cout << "Entrez l'article " << endl;
 	cin >> articlePerso;
@@ -58,8 +58,7 @@ int main()
 
 	// 11. Ajouter au panierQuatre  un article en utilisant uniquement un id (non utilisé précédement)
 
-	Article divers(978);
-	panierQuatre += divers;
+	panierQuatre = 978 + panierQuatre;
 
 	// 12. Afficher le panierQuatre
 
