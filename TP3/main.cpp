@@ -1,3 +1,11 @@
+/********************************************************************
+Fichier: main.cpp
+Auteur: Minh DUONG & Thuy-Vanny LY
+Description:
+Fichier main qui contient l'exécution principale du TP3 de INF1010.
+Bien lire les commentaires et coder les instructions.
+********************************************************************/
+
 #include "SystemeSecurite.h"
 #include "PirateInformatique.h"
 using namespace std;
@@ -13,40 +21,40 @@ int main()
 	//	niveau d'acces	Local		Periode
 	//
 	//	1,				"L-3589",	PERIODE_ACCES_MATIN
-	secuPoly.ajouterRegle(RegleAcces(1, "L-3589", "Matin"));
+	secuPoly.ajouterRegle(RegleAcces(1, "L-3589", PERIODE_ACCES_MATIN));
 	//	1,				"L-3587",	PERIODE_ACCES_MATIN
-	secuPoly.ajouterRegle(RegleAcces(1, "L-3587", "Matin"));
+	secuPoly.ajouterRegle(RegleAcces(1, "L-3587", PERIODE_ACCES_MATIN));
 	//	1,				"L-3588",	PERIODE_ACCES_MATIN
-	secuPoly.ajouterRegle(RegleAcces(1, "L-3588", "Matin"));
+	secuPoly.ajouterRegle(RegleAcces(1, "L-3588", PERIODE_ACCES_MATIN));
 	//
 	//	5,				"L-3589",	PERIODE_ACCES_SOIR
-	secuPoly.ajouterRegle(RegleAcces(5, "L-3589", "Soir"));
+	secuPoly.ajouterRegle(RegleAcces(5, "L-3589", PERIODE_ACCES_SOIR));
 	//	5,				"L-3587",	PERIODE_ACCES_SOIR
-	secuPoly.ajouterRegle(RegleAcces(5, "L-3587", "Soir"));
+	secuPoly.ajouterRegle(RegleAcces(5, "L-3587", PERIODE_ACCES_SOIR));
 	//	5,				"L-3588",	PERIODE_ACCES_SOIR
-	secuPoly.ajouterRegle(RegleAcces(5, "L-3588", "Soir"));
+	secuPoly.ajouterRegle(RegleAcces(5, "L-3588", PERIODE_ACCES_SOIR));
 	//
 	//	20,				"L-3589",	PERIODE_ACCES_NUIT
-	secuPoly.ajouterRegle(RegleAcces(20, "L-3589", "Nuit"));
+	secuPoly.ajouterRegle(RegleAcces(20, "L-3589", PERIODE_ACCES_NUIT));
 	//	20,				"L-3587",	PERIODE_ACCES_NUIT
-	secuPoly.ajouterRegle(RegleAcces(20, "L-3587", "Nuit"));
+	secuPoly.ajouterRegle(RegleAcces(20, "L-3587", PERIODE_ACCES_NUIT));
 	//	25,				"L-3588",	PERIODE_ACCES_NUIT
-	secuPoly.ajouterRegle(RegleAcces(25, "L-3588", "Nuit"));
+	secuPoly.ajouterRegle(RegleAcces(25, "L-3588", PERIODE_ACCES_NUIT));
 	//
 	//	10,				"L-4489",	PERIODE_ACCES_MATIN
-	secuPoly.ajouterRegle(RegleAcces(10, "L-4489", "Matin"));
+	secuPoly.ajouterRegle(RegleAcces(10, "L-4489", PERIODE_ACCES_MATIN));
 	//	10,				"L-4487",	PERIODE_ACCES_MATIN
-	secuPoly.ajouterRegle(RegleAcces(10, "L-4487", "Matin"));
+	secuPoly.ajouterRegle(RegleAcces(10, "L-4487", PERIODE_ACCES_MATIN));
 	//
 	//	10,				"L-4489",	PERIODE_ACCES_SOIR
-	secuPoly.ajouterRegle(RegleAcces(10, "L-4489", "Soir"));
+	secuPoly.ajouterRegle(RegleAcces(10, "L-4489", PERIODE_ACCES_SOIR));
 	//	10,				"L-4487",	PERIODE_ACCES_SOIR
-	secuPoly.ajouterRegle(RegleAcces(10, "L-4487", "Soir"));
+	secuPoly.ajouterRegle(RegleAcces(10, "L-4487", PERIODE_ACCES_SOIR));
 	//
 	//	20,				"L-4489",	PERIODE_ACCES_NUIT
-	secuPoly.ajouterRegle(RegleAcces(20, "L-4489", "Nuit"));
+	secuPoly.ajouterRegle(RegleAcces(20, "L-4489", PERIODE_ACCES_NUIT));
 	//	25,				"L-4487",	PERIODE_ACCES_NUIT
-	secuPoly.ajouterRegle(RegleAcces(25, "L-4487", "Nuit"));
+	secuPoly.ajouterRegle(RegleAcces(25, "L-4487", PERIODE_ACCES_NUIT));
 	//
 	////////////////////////////////////////////////////////////
 
@@ -62,7 +70,7 @@ int main()
 	
     // afficher les infos de l'agent de sécurité (operator <<)
 	
-	cout << agentNelson;
+	cout << agentNelson << endl;
 
 	//Creer un professeur
 	//
@@ -71,7 +79,7 @@ int main()
 	//
 	Professeur profRios("Rios", "Janet");
 	// afficher les infos du professeur (operator <<)
-	cout << profRios;
+	cout << profRios << endl;
 	//Creer un etudiant
 	//
 	//	nom: Ball
@@ -79,7 +87,7 @@ int main()
 	//
 	Etudiant etudiantBall("Ball", "Damon");
 	// afficher les infos de l'étudiant (operator <<)
-	cout << etudiantBall;
+	cout << etudiantBall << endl;
 
 	//Cree un pirate Informatique qui prendra l'identite 
 	//du gardien de securite
@@ -92,11 +100,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal(agentNelson,"L-3587", "Nuit");
+	secuPoly.accederLocal(agentNelson, "L-3587", PERIODE_ACCES_NUIT);
 	//	"L-4489",	PERIODE_ACCES_SOIR
-	secuPoly.accederLocal(agentNelson, "L-4489", "Soir");
+	secuPoly.accederLocal(agentNelson, "L-4489", PERIODE_ACCES_SOIR);
 	//	"L-4487",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal(agentNelson, "L-4487", "Nuit");
+	secuPoly.accederLocal(agentNelson, "L-4487", PERIODE_ACCES_NUIT);
 	//
 	//
 	
@@ -107,11 +115,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_MATIN
-	secuPoly.accederLocal(profRios, "L-3587", "Matin");
+	secuPoly.accederLocal(profRios, "L-3587", PERIODE_ACCES_MATIN);
 	//	"L-4489",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal(profRios, "L-4489", "Nuit");
+	secuPoly.accederLocal(profRios, "L-4489", PERIODE_ACCES_NUIT);
 	//	"L-4487",	PERIODE_ACCES_SOIR
-	secuPoly.accederLocal(profRios, "L-4487", "Soir");
+	secuPoly.accederLocal(profRios, "L-4487", PERIODE_ACCES_SOIR);
 	//
 	//
 	
@@ -122,11 +130,11 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3589",	PERIODE_ACCES_MATIN
-	secuPoly.accederLocal(etudiantBall, "L-3589", "Matin");
+	secuPoly.accederLocal(etudiantBall, "L-3589", PERIODE_ACCES_MATIN);
 	//	"L-4489",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal(etudiantBall, "L-4489", "Nuit");
+	secuPoly.accederLocal(etudiantBall, "L-4489", PERIODE_ACCES_NUIT);
 	//	"L-3589",	PERIODE_ACCES_SOIR
-	secuPoly.accederLocal(etudiantBall, "L-3589", "Soir");
+	secuPoly.accederLocal(etudiantBall, "L-3589", PERIODE_ACCES_SOIR);
 	//
 	//
 	
@@ -139,18 +147,18 @@ int main()
 	//	Local		Periode
 	//
 	//	"L-3587",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-3587", "Nuit");
+	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-3587", PERIODE_ACCES_NUIT);
 	//	"L-4489",	PERIODE_ACCES_SOIR
-	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-3587", "Soir");
+	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-3587", PERIODE_ACCES_SOIR);
 	//	"L-4487",	PERIODE_ACCES_NUIT
-	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-4487", "Nuit");
+	secuPoly.accederLocal("Nelson", "Garry", "AgentSecurite", 25, "L-4487", PERIODE_ACCES_NUIT);
 	//
 	//
 	
 
 	
 	//Afficher le journal d'acces du systeme de securite
-	secuPoly.imprimerJournal;
+	secuPoly.imprimerJournal();
 	
 
 
@@ -173,8 +181,11 @@ int main()
 //
 //	delete etudiant;
 //	
-//	
-//	
+//	L'etudiant peut accéder le local avec un niveau d'acces requis de 5, car un pointeur utilise 
+//  les methodes de la classe mère c-a-d Employe au lieu de la classe dérivée Etudiant.Nous utilisons 
+//  donc la methode getNiveauAcces de la classe Employe qui elle retourne le niveau d'acces d'un 
+//  employé donc[5] au lieu de[1] de la classe Etudiant.C'est pour cela que nous devons utiliser le 
+//  polymorphisme.
 //	
 
 

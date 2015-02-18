@@ -1,31 +1,38 @@
 #ifndef REGLES_ACCES_H
 #define	REGLES_ACCES_H
 
+////////////////////////////////////////////////////////////////////////////////////
+//FICHIER		REGLEACCES.H
+//AUTEURS		Minh DUONG & Thuy-Vanny LY
+//DATE			23 FEVRIER 2015
+//DESCRIPTION	Ce fichier d'entete declare un objet de type RegleAcces ainsi que ses atributs et methodes.
+////////////////////////////////////////////////////////////////////////////////////
+
+
 #include <string>
 
-const string PERIODE_ACCES_MATIN = "Matin";
-const string PERIODE_ACCES_SOIR = "Soir";
-const string PERIODE_ACCES_NUIT = "Nuit";
 
+const std::string PERIODE_ACCES_MATIN = "Matin";
+const std::string PERIODE_ACCES_SOIR = "Soir";
+const std::string PERIODE_ACCES_NUIT = "Nuit";
 
-using namespace std;
 
 class RegleAcces
 {
 public:
 	RegleAcces();
-	RegleAcces(unsigned int niveau, const string& local, const string& periode);
+	RegleAcces(unsigned int niveau, const std::string& local, const std::string& periode);
 
-	string			getLocal()				const;
+	std::string			getLocal()				const;
 	unsigned int	getNiveauAccesRequis()	const;
-	string			getPeriode()			const;
+	std::string			getPeriode()			const;
 
 	bool operator==(const RegleAcces& regle) const;
 
 private:
-	string			local_;
+	std::string			local_;
 	unsigned int	niveauAccesRequis_;
-	string			periode_;
+	std::string			periode_;
 };
 
 #endif	//REGLES_ACCES_H

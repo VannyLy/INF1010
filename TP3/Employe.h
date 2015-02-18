@@ -1,4 +1,13 @@
 #pragma once
+
+////////////////////////////////////////////////////////////////////////////////////
+//FICHIER		EMPLOYE.H
+//AUTEURS		Minh DUONG & Thuy-Vanny LY
+//DATE			23 FEVRIER 2015
+//DESCRIPTION	Ce fichier d'entete declare un objet de type Employe ainsi que ses atributs et methodes.
+////////////////////////////////////////////////////////////////////////////////////
+
+
 #include <string>
 #include <iostream>
 

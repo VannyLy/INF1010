@@ -1,7 +1,15 @@
+////////////////////////////////////////////////////////////////////////////////////
+//FICHIER		EMPLOYE.CPP
+//AUTEURS		Minh DUONG & Thuy-Vanny LY
+//DATE			23 FEVRIER 2015
+//DESCRIPTION	Ce programme déclare les méthodes d'initialisation par defaut et par parametre, 
+//				de suppression d'un objet section et d'affichage des attributs d'un objet Employe.
+////////////////////////////////////////////////////////////////////////////////////
+
 #include "Employe.h"
 #include <string>
 #include <typeinfo>
-
+using namespace std;
 //Initialisation par defaut
 Employe::Employe()
 {
