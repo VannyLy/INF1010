@@ -1,0 +1,297 @@
+///////////////////////////////////Afficheur//////////////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHER.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type Afficheur ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEUR.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme déclare les méthodes publiques et
+//// de suppression d'un objet section d'un objet Afficheur.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//afficheranglais()
+//
+////Méthode permettant l'affichage des données en anglais
+//
+//afficherfrancais
+//
+////Méthode permettant l'affichage des données en francais
+//
+//gettypeafficheur
+//
+////Méthode qui retourne un string qui représente le type de l'afficheur 
+//
+//
+//
+//
+//
+/////////////////////////////////////BASE DE DONNÉES//////////////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER BASEDEDONNEES.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type BaseDeDonnees ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER BASEDEDONNEES.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet BaseDeDonees: ajouterConnection(),
+////				retirerConnection(), mettreAJourConenction() et mettreAJourDonnees().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//AjouterConnection
+//
+////Méthode qui prend en paramètre un pointeur de Connection. Elle retourne true lorsqu’une Connection 
+////est ajoutée avec succès.Elle retourne false lorsque la Connection est déjà présente.
+//
+//retirerConnection
+//
+////Méthode qui prend en paramètre un pointeur de Connection. Elle retourne true lorsqu’une Connection 
+////est retirée avec succès. Elle retourne false lorsque la Connection est absente.
+//
+//mettreAJourConnection
+//
+////Méthode qui met à jour toutes les éléments contenus dans l'attribut connections_ en appelant 
+////Connection::mettreAJourConnection().
+//
+//mettreAJourDonnees
+//
+////Méthode qui met à jour les données
+//
+//
+/////////////////////////////////////////CONECTION/////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER CONNECTION.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type Connection qui est une interface
+////				qui permet à ses classes dérivées de se connecter à une base de données.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//
+//
+////////////////////////////////////////////////METEO///////////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER METEO.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type Meteo ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////Constructeur par défaut
+//
+////Constructeur par paramètres
+//
+////Accesseurs
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER METEO.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet Meteo: mettreAJourDonnees().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//mettreAJourDonnees
+//
+////Méthode qui met les données à jour en générant une variation aléatoire de l'ancienne donnée.
+//
+///////////////////////////////////////DATEHEURE////////////////////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER DATEHEURE.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type DateHeure ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER DATEHEURE.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet DateHeure: mettreAJourDonnees().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////Constructeur par défaut
+//
+////Accesseur
+//
+//mettreAJourDonnees
+//
+////Méthode qui met à jour les attributs à l'heure actuelle de l'ordinateur.
+//
+//
+//////////////////////////////////////AFFICHEURMETEO//////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEURMETEO.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type AfficheurMeteo ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEURMETEO.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet AfficheurMeteo: afficherFrancais(),
+////				afficherAnglais(), getTypeAfficheur(), mettreAJourConnection().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//afficherfrancais
+//
+////Méthode d'affichage de la météo dans la langue francaise
+//
+//afficherAnglais
+//
+////Méthode d'affichage de la météo dans la langue anglaise
+//
+//Gettypeafficheur
+//
+////Méthode qui retourne le type de l'afficheur sous forme de string
+//
+//mettreAJourConnection
+//
+////Méthode qui met à jour les connections lorsque la classe Meteo l'appelle.
+//
+//
+//
+//////////////////////////////////////METEOSTATISTIQUE///////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER METEOSTATISTIQUE.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type MeteoStatistiques ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER METEOSTATISTIQUE.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet MeteoStatistique: afficherFrancais(),
+////				afficherAnglais(), getTypeAfficheur(), mettreAJourConnection().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//afficherfrancais
+//
+////Méthode d'affichage de la météo dans la langue francaise
+//
+//afficherAnglais
+//
+////Méthode d'affichage de la météo dans la langue anglaise
+//
+//Gettypeafficheur
+//
+////Méthode qui retourne le type de l'afficheur sous forme de string. 
+//
+//mettreAJourConnection
+//
+////Méthode qui met à jour les connections lorsque la classe Meteo l'appelle.
+//
+////////////////////////////////////AFFICHEURDATEHEURE///////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEURDATEHEURE.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type AfficheurDateheure ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEURDATEHEURE.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet AfficheurDateheure: afficherFrancais(),
+////				afficherAnglais(), getTypeAfficheur(), mettreAJourConnection().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//afficherfrancais
+//
+////Méthode d'affichage de la météo dans la langue francaise
+//
+//afficherAnglais
+//
+////Méthode d'affichage de la météo dans la langue anglaise
+//
+//Gettypeafficheur
+//
+////Méthode qui retourne le type de l'afficheur sous forme de string. 
+//
+//mettreAJourConnection
+//
+////Méthode qui met à jour les connections lorsque la classe Meteo l'appelle.
+//
+//
+///////////////////////////////////SiteMeteo///////////////////////////////
+//
+////H
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER SITEMETEO.H
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce fichier d'entete declare un objet de type SiteMeteo ainsi que ses atributs et methodes.
+//////////////////////////////////////////////////////////////////////////////////////
+//
+////CPP
+//
+//////////////////////////////////////////////////////////////////////////////////////
+////FICHIER AFFICHEURDATEHEURE.CPP
+////AUTEURS Minh DUONG & Thuy-Vanny LY
+////DATE 15 MARS 2015
+////DESCRIPTION Ce programme implemente les fonctions publiques d'un objet SiteMeteo: afficherSite(), 
+////				ajouterAfficheur(), retirerAfficheur().
+//////////////////////////////////////////////////////////////////////////////////////
+//
+//afficherSite
+//
+////Méthode qui affiche tous les afficheurs que l'attribut afficheurs_ contient.
+//
+//ajouterAfficheur
+//
+////Méthode qui prend un paramettre un pointeur d'afficheur en paramettre et l'ajoute au site.
+//
+//retirerAfficheur
+//
+////Méthode qui prend en parametre un pointeur d'afficheur et le retire du site tout en maintenant l'ordre.
