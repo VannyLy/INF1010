@@ -42,7 +42,7 @@ ostream& operator<<(ostream& os, const PanierArticles& panierArticles)
 	auto it = panierArticles.getConteneur().begin();
 	while (it != panierArticles.getConteneur().end())
 	{
-		os << *it << endl;
+		os << **it << endl;
 		++it;
 	}
 		return os;

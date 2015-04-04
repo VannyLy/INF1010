@@ -55,10 +55,7 @@ bool Commerce::supprimerArticleCommande(const Client& client, Article* article)
 void Commerce::appliquerRabais(const Client& client, Rabais& rabais)
 {
 	auto trouverClient = mapClientPanier_.find(client);
-	if (trouverClient != mapClientPanier_.end()) //////////NECESSAIRE??  ANTONIO EN A PAS
-	{
-		for_each(trouverClient->second->getConteneur().begin(), trouverClient->second->getConteneur().end(), rabais);
-	}
+	for_each(trouverClient->second->getConteneur().begin(), trouverClient->second->getConteneur().end(), rabais);
 }
 
 void Commerce::payerPanier(Client& client, const float& montant)
@@ -99,10 +96,10 @@ void Commerce::afficherParPrixMoyenDecroissant() const
 	multimap<float, PanierArticles*, greater<float>> prixPanierMap;
 	//Au lieu d'avoir une map <cient, panier>, on veut une map <prix, panier>, alors on fait une transformation
 	transform(mapClientPanier_.begin(), mapClientPanier_.end(), inserter(prixPanierMap, prixPanierMap.begin()), PanierPrixMoyen());
-	auto prixPanier = mapClientPanier_.begin();
-	while (prixPanier != mapClientPanier_.end())
+	auto it = prixPanierMap.begin();
+	while (it != prixPanierMap.end())
 	{
-		cout << "Prix Moyen : " << prixPanier->first << endl << *(prixPanier->second) << endl << endl;
-		++prixPanier;
+		cout << "Prix Moyen : " << it->first << endl << *(it->second) << endl << endl;
+		++it;
 	}
 }

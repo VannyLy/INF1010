@@ -44,11 +44,12 @@ int main() {
 	cout << panier1 << endl;
     
 	// 3) Afficher la moyenne des prix des articles du panier
-	panier1.obtenirMoyenne();
+	cout << "Moyenne des prix : " << panier1.obtenirMoyenne() << "$" << endl;
+	
 	
 	// 4) Afficher l'id de l'article le moins cher et l'id de l'article le plus cher
-	cout << "L'ID de l'article le moins cher" <<panier1.obtenirPlusPetitElement().getId() << endl;
-	cout << "L'ID de l'article le moins cher" << panier1.obtenirPlusGrandElement().getId() << endl;
+	cout << "L'ID de l'article le moins cher : " <<panier1.obtenirPlusPetitElement().getId() << endl;
+	cout << "L'ID de l'article le plus cher : " << panier1.obtenirPlusGrandElement().getId() << endl << endl;
     
 	// 5) Supprimer l'article avec id = 2.
 	cout << "Supprimer l'article avec id = 2..." << endl << endl;
@@ -60,7 +61,7 @@ int main() {
 	panier1.supprimer(FoncteurPrixZero());
     
 	// 7) Afficher de nouveau le panier
-	cout << "Afficher de nouveau le panier..." << endl;
+	cout << "Afficher de nouveau le panier..." << endl << endl;
 	cout << panier1 << endl;
     
 	// 8) Appeller la fonction trier du panier et afficher la liste d'article obtenue avec
@@ -106,7 +107,7 @@ int main() {
 
 	// 15) Appliquer 10% de rabais sur le panier de Martin. 
 	cout << "*********** Affichage apres modifications ***********" << endl;
-	target.appliquerRabais(clientJohn, Rabais(10.0));
+	target.appliquerRabais(clientMartin, Rabais(10.0));
 	target.afficher("Tremblay");
 
 	// 16) Créer l'article suivant:
@@ -119,7 +120,8 @@ int main() {
 	// 18) Supprimer l'article 3 de John
 	target.supprimerArticleCommande(clientJohn, article3);
 
-	// 19) Afficher les commandes en ordre décroissant par le prix moyen des panier
+	// 19) Afficher les commandes en ordre decroissant par le prix moyen des panier
+	cout << "Affichage des commandes en ordre decroissant par le prix moyen des paniers: " << endl;
 	target.afficherParPrixMoyenDecroissant();
 
 	// 20) Supprimer la commande de Martin et afficher les commandes en ordre alphabétique

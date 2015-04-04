@@ -81,6 +81,7 @@
     <ClCompile Include="Article.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Commerce.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="PanierArticles.cpp" />
   </ItemGroup>
   <ItemGroup>

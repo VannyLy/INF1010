@@ -34,7 +34,7 @@ class PanierAlphabetique
 {
 public:
 	PanierAlphabetique(){};
-	std::pair<std::string, PanierArticles*> operator()(const pair<Client, PanierArticles*>& nomPrenomPanier)
+	std::pair<std::string, PanierArticles*> operator()(const std::pair<Client, PanierArticles*>& nomPrenomPanier)
 	{
 		return std::pair<std::string, PanierArticles*>(nomPrenomPanier.first.getNom() + "," + nomPrenomPanier.first.getPrenom(), nomPrenomPanier.second);
 	}
@@ -44,7 +44,7 @@ class PanierPrixMoyen
 {
 public:
 	PanierPrixMoyen(){};
-	std::pair<float, PanierArticles*> operator()(const pair<Client, PanierArticles*>& prixPanier)
+	std::pair<float, PanierArticles*> operator()(const std::pair<Client, PanierArticles*>& prixPanier)
 	{
 		return std::pair<float, PanierArticles*>(prixPanier.second->obtenirMoyenne(), prixPanier.second);
 	}
@@ -63,7 +63,7 @@ public:
 	bool supprimerArticleCommande(const Client& client, Article* article);
 
 	void appliquerRabais(const Client& client, Rabais& rabais);
-	void payerPanier(Client& client, const float& montant); ////pk pas const Client???
+	void payerPanier(Client& client, const float& montant);
 	void afficher(const Client& client) const;
 	void afficher(const std::string& nomClient) const;
 	void afficherParOrdreAlphabetique() const;

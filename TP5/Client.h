@@ -2,7 +2,6 @@
 
 #ifndef	CLIENT_H
 #define CLIENT_H
-#define T int
 #include <list>
 #include <fstream>
 

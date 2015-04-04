@@ -2,19 +2,29 @@
 
 #ifndef	PANIER_H
 #define PANIER_H
+#include "Article.h"
+#include "FoncteurPrixZero.h"
 #include <list>
 #include <algorithm>
 #include <fstream>
 
+//Classe servant a trouver l'article le moins cher
+class PlusPetit
+{
+public:
+	bool operator()(Article* article1, Article* article2)
+	{
+		return (article1->getPrix() < article2->getPrix());
+	}
+};
 
 //Classe servant a la deuxieme methode "supprimer"
-template<typename T>
 class predUnaire
 {
 public:
 	predUnaire(unsigned int id) :id_(id){};
 	
-	bool operator() (T* article)
+	bool operator() (Article* article)
 	{
 		return(article->getId() == id_);
 	}
@@ -33,15 +43,13 @@ public:
 	const std::list<T*>& getConteneur() const { return liste_; };
 	//Methodes
 	void ajouter(T* ajoutListe){ liste_.push_back(ajoutListe); };
-	T& obtenirPlusPetitElement() const { return **(std::min_element(liste_.begin() , liste_.end())); };
-	T& obtenirPlusGrandElement() const { return **(std::max_element(liste_.begin(), liste_.end())); };
+	T& obtenirPlusPetitElement() const { return **(std::min_element(liste_.begin() , liste_.end(), PlusPetit())); };
+	T& obtenirPlusGrandElement() const { return **(std::max_element(liste_.begin(), liste_.end(), PlusPetit())); };
 	void supprimer(const unsigned int& id)
 	{ 
-		//predUnaire condition(id);
-		liste_.erase(std::find_if(liste_.begin(), liste_.end(), predUnaire<T>(id)));
-	};	
-	template<typename Predicat>
-	void supprimer(Predicat pred){ liste_.erase(std::find_if(liste_.begin(), liste_.end(), !pred)); };
+		liste_.erase(std::find_if(liste_.begin(), liste_.end(), predUnaire(id)));
+	};
+	void supprimer(FoncteurPrixZero pred){ liste_.erase(std::find_if(liste_.begin(), liste_.end(), pred)); };
 	friend std::ostream& operator<<(std::ostream& os, const Panier& panier) {
 		std::list<T*>::iterator iter = liste_.begin();
 		while (iterator!=liste_.end())

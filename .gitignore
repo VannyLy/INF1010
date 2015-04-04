@@ -191,3 +191,5 @@ ModelManifest.xml
 # Compressed files
 *.zip
 
+# PDF files
+*.pdf
