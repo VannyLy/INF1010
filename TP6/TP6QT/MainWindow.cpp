@@ -22,7 +22,7 @@ MainWindow::MainWindow() {
 void MainWindow::setSliderRange() {
 
 	// Vous devez mettre le range du slider entre -255 et 255
-	// Au départ, le slider doit être initilisé à zéro
+	// Au départ, le slider doit être initilisé �  zéro
 }
 
 // Ne pas changer. Construit l'interface
@@ -107,41 +107,57 @@ void MainWindow::setMenu() {
 void MainWindow::setConnection() {
 	
 	// Le slot 'close()' est une méthode de la classe QMainWindow dont MainWindow derive
-	connect(exit_action_, SIGNAL(triggered()), this, SLOT(close()));
+        connect(exit_action_, SIGNAL(triggered()), this, SLOT(close()));
 
 	// Vous devez établir les connections entre les elements de l'interface et les méthodes slots.
 	// 1. L'action 'open_action' doit être connectée au slot 'load()' en utlisant le signal 'triggered()'
 	//    cf. la class QAction
-	
+        connect(open_action_, SIGNAL(triggered()), this, SLOT(load()));
+
 	// 2. La combobox 'process_combobox_' doit être connectée au slot 'processImage()'. 
 	//    Le signal est emit quand l'utlisateur change d'index, cf. class QComboBox
-	
+        connect(process_combobox_, SIGNAL(currentIndexChanged()), this,SLOT(processImage()));
+
 	// 3. L slider 'slider_' doit être connecté au slot 'processImage()'. 
 	//    Le signal est emit quand l'utlisateur change la valeur du slider, cf. class QSlider
-	
-	// 4. Le bouton 'empty_button' doit être connecté au slot 'empty()'. 
+        connect(slider_, SIGNAL(valueChanged(int)), this, SLOT(processImage()));
+
+        // 4. Le bouton 'empty_butotn' doit être connecté au slot 'empty()'.
 	//    Le signal est emis lorsque l'utilisateur clique sur le button, cf. class QButton
-	
+        connect(empty_button_, SIGNAL(clicked()), this, SLOT(empty()));
+
 	// 5. Le QListWidget 'list_paths_' doit être connecté au slot 'setImage(QListWidgetItem*)'. 
 	//    Le signal est emis lorsque l'utilisateur clique sur un des elements de la liste.
 	//    cf. class QListWidget et QListWidgetItem
+        connect(list_paths_, SIGNAL(item_clicked(QListWidgetItem*)), this, SLOT(setImage(QListWidgetItem*)));
+
 }
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::checkImageValid(const QImage &image) const {
 
-	// Vous devez verifier si l'image est valide, c'est à dire si elle n'est pas nulle, cf. QImage
+	// Vous devez verifier si l'image est valide, c'est �  dire si elle n'est pas nulle, cf. QImage
 	// Cette fonction doit envoyer une expection de type 'ImageLoadingException'
+    if(image.isNULL())
+    {
+        ImageLoadingException imageCorrompue("�Votre image est corrompue\n");
+        throw imageCorrompue;
+    }
 }
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
 void MainWindow::checkImageAlreadyLoaded(const QImage &image) const {
 
-	// Vous devez verifier si l'image est déjà présente dans la liste, cf. QList
+	// Vous devez verifier si l'image est déj�  présente dans la liste, cf. QList
 	// Cette fonction doit envoyer une expection de type 'ImageLoadingException'
+    if(images_list_.constains(&image))
+    {
+        ImageLoadingException imageDejaChargee("�Votre image est d�ja charg�e\n");
+        throw imageDejaChargee;
+    }
 }
 
-// Ne pas changer. Ajoute les images à la liste
+// Ne pas changer. Ajoute les images �  la liste
 void MainWindow::addImages() {
 	// Ici on ouvre les images au format 'png' seulement
 	QStringList files = QFileDialog::getOpenFileNames(this, "Open file(s)", "./", "Files (*.png)");
@@ -151,7 +167,7 @@ void MainWindow::addImages() {
 	if (files.size() == 0)
         return;
 
-    // Sinon, on load les images et on les ajoute à la liste
+    // Sinon, on load les images et on les ajoute �  la liste
     // On update également la liste de paths
 	for (int i = 0; i < files.size(); ++i)
 	{
@@ -171,9 +187,18 @@ void MainWindow::load() {
 
 	// Vous devez gérer les exceptions de type 'ImageLoadingException' générées lors de l'ouverture des images
 	// cf. méthodes addImages(), checkImageValid() et checkImageAlreadyLoaded()
-	// Si une exception est générée, il faut alors faire appel à la méthode showAlert() de 'ImageLoadingException' pour afficher l'erreur
+	// Si une exception est générée, il faut alors faire appel �  la méthode showAlert() de 'ImageLoadingException' pour afficher l'erreur
 		
-	//	addImages();
+    try
+    {
+        addImages();
+
+    }
+    catch (ImageLoadingException& erreur)
+    {
+        erreur.showAlert();
+    }
+
 }
 
 // Ne pas changer. Vide la liste d'images et de paths
@@ -186,7 +211,7 @@ void MainWindow::empty() {
 	setImage(-1);
 }
 
-// Ne pas changer. Affiche l'image à l'index index
+// Ne pas changer. Affiche l'image �  l'index index
 void MainWindow::setImage(int index) {
 
 	if ((index >= 0) && (index < images_list_.size()))
@@ -208,7 +233,7 @@ void MainWindow::setImage(int index) {
 	processImage();
 }
 
-// Ne pas changer. Affiche l'image à l'index de l'element de list_paths_ 
+// Ne pas changer. Affiche l'image �  l'index de l'element de list_paths_ 
 // Surcharge de 'setImage(int index)'
 void MainWindow::setImage(QListWidgetItem* item) {
 
@@ -226,7 +251,18 @@ void MainWindow::processImageIntensity() {
 	// A l,inverse, si l'intensité moyenne est trop basse, la méthode retourne -1
 	// Enfin, la méthode retourne 0 si l'intensité moyenne est correcte 
 
-	// int res = process_.intensity(slider_->value(), images_list_[index_], image_process_);
+        int res = process_.intensity(slider_->value(), images_list_[index_], image_process_);
+        if(res ==1)
+        {
+            ImageProcessingException erreurHauteIntensite("L'intensit� est trop grande.");
+            throw erreurHauteIntensite;
+        }
+        if(res ==-1)
+        {
+            ImageProcessingException erreurBasseIntensite("L'intensit� est trop basse.");
+            throw erreurBasseIntensite;
+        }
+
 }
 
 // !!!!!!!!!! A FAIRE !!!!!!!!!!!!
@@ -238,7 +274,18 @@ void MainWindow::processImageContrast() {
 	// A l,inverse, si l'intensité moyenne est trop basse, la méthode retourne -1
 	// Enfin, la méthode retourne 0 si l'intensité moyenne est correcte 
 	
-	// int res = process_.contrast(slider_->value(), images_list_[index_], image_process_);
+        int res = process_.contrast(slider_->value(), images_list_[index_], image_process_);
+
+        if(res == 1)
+        {
+            ImageProcessingException erreurHautContraste("Le constraste est trop grand.");
+            throw erreurHautContraste;
+        }
+        if(res == -1)
+        {
+            ImageProcessingException erreurBasContraste("Le contraste est trop bas.");
+            throw erreurBasContraste;
+        }
 }
 
 // Ne pas changer. Traite l'image courrante et update l'affichage
@@ -273,14 +320,51 @@ void MainWindow::processImageAccordingToCombobox() {
 void MainWindow::processImage() {
 
 	// Vous devez gérer les exceptions de type 'ImageProcessingException' générées lors du traitement des images, cf. méthodes processImageIntensity(), processImageContrast()
-	// Si une exception est générée, il faut alors faire appel à la méthode resetSlider(...) de 'ImageProcessingException' pour remettre le slider à zero.
+	// Si une exception est générée, il faut alors faire appel �  la méthode resetSlider(...) de 'ImageProcessingException' pour remettre le slider �  zero.
 	// Il faut aussi gérer l'exception 'NoImageException' générée par la méthode 'processImageAccordingToCombobox()'.
 	// Cette exception est générée si on essaie de traiter une image alors que la liste d'image est vide.
-	// Le cas échéant, il faudra ne plus afficher l'image traitée, remettre le slider et le combobox à zero en faisant appel à 'reset(...) de 'NoImageException
-	// Enfin, si aucune exception n'est levée, 'image_process_label_->setPixmap(QPixmap::fromImage(image_process_));' met à jour l'affichage du résultat du traitement
+	// Le cas échéant, il faudra ne plus afficher l'image traitée, remettre le slider et le combobox �  zero en faisant appel �  'reset(...) de 'NoImageException
+	// Enfin, si aucune exception n'est levée, 'image_process_label_->setPixmap(QPixmap::fromImage(image_process_));' met �  jour l'affichage du résultat du traitement
 
-	// processImageAccordingToCombobox();
-	// Update l'affichage de l'image traitée si aucune exception est n'générée
-	// image_process_label_->setPixmap(QPixmap::fromImage(image_process_));
+
+    bool erreurPresente = false;
+    try
+    {
+        processImageIntensity();
+
+    }
+    catch (ImageLoadingException& erreur)
+    {
+        erreur.resetSlider(slider_);
+        erreurPresente = true;
+    }
+
+    try
+    {
+        processImageContrast();
+
+    }
+    catch (ImageLoadingException& erreur)
+    {
+        erreur.resetSlider(slider_);
+        erreurPresente = true;
+    }
+
+    try
+    {
+        processImageAccordingToCombobox();
+
+    }
+    catch (NoImageException& err)
+    {
+        err.reset(slider_,image_process_label_,process_combobox_);
+        erreurPresente = true;
+    }
+
+
+    // Update l'affichage de l'image traitée si aucune exception est n'générée
+    if (!erreurPresente)
+            image_process_label_->setPixmap(QPixmap::fromImage(image_process_));
+
 }
 
